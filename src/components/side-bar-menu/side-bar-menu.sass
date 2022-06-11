@@ -1,0 +1,25 @@
+.side-bar-container
+  position: fixed
+  top: 0
+  left: -100%
+  width: 300px
+  max-width: 80%
+  height: 100vh
+  background-color: gray
+  padding: 5px
+  display: flex
+  flex-direction: column
+  transition: left .3s ease-out
+
+:host([open]) .side-bar-container
+  background-color: red
+  left: 0
+  animation: slideOpen .2s ease-out
+
+@keyframes slideOpen
+    from
+       transform: translateX(-90px)
+
+    to
+       transform: translateX(0)
+
