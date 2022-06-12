@@ -3,16 +3,20 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
-    <title>Stencil Component Starter</title>
+    <title>Base Components</title>
 
     <script type="module" src="/build/base-components.esm.js"></script>
     <script nomodule src="/build/base-components.js"></script>
   </head>
   <body>
     <base-button></base-button>
-    <side-bar-menu title="titulo do menu">
-      <a href="https://www.google.com" target="_blank">clique</a>
-      <div> colocando outra coisa pra testar </div>
+    <side-bar-menu title="titulo do menu" theme="dark">
+      <div>
+        <side-bar-nav text="teste 0"/>
+        <side-bar-nav text="teste 2"/>
+        <side-bar-nav text="teste 3"/>
+        <side-bar-nav text="teste 4"/>
+      </div>
     </side-bar-menu>
   </body>
 </html>

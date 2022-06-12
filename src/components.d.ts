@@ -10,7 +10,11 @@ export namespace Components {
     }
     interface SideBarMenu {
         "open": boolean;
+        "theme": string;
         "title": string;
+    }
+    interface SideBarNav {
+        "text": string;
     }
 }
 declare global {
@@ -26,9 +30,16 @@ declare global {
         prototype: HTMLSideBarMenuElement;
         new (): HTMLSideBarMenuElement;
     };
+    interface HTMLSideBarNavElement extends Components.SideBarNav, HTMLStencilElement {
+    }
+    var HTMLSideBarNavElement: {
+        prototype: HTMLSideBarNavElement;
+        new (): HTMLSideBarNavElement;
+    };
     interface HTMLElementTagNameMap {
         "base-button": HTMLBaseButtonElement;
         "side-bar-menu": HTMLSideBarMenuElement;
+        "side-bar-nav": HTMLSideBarNavElement;
     }
 }
 declare namespace LocalJSX {
@@ -36,11 +47,16 @@ declare namespace LocalJSX {
     }
     interface SideBarMenu {
         "open"?: boolean;
+        "theme"?: string;
         "title"?: string;
+    }
+    interface SideBarNav {
+        "text"?: string;
     }
     interface IntrinsicElements {
         "base-button": BaseButton;
         "side-bar-menu": SideBarMenu;
+        "side-bar-nav": SideBarNav;
     }
 }
 export { LocalJSX as JSX };
@@ -49,6 +65,7 @@ declare module "@stencil/core" {
         interface IntrinsicElements {
             "base-button": LocalJSX.BaseButton & JSXBase.HTMLAttributes<HTMLBaseButtonElement>;
             "side-bar-menu": LocalJSX.SideBarMenu & JSXBase.HTMLAttributes<HTMLSideBarMenuElement>;
+            "side-bar-nav": LocalJSX.SideBarNav & JSXBase.HTMLAttributes<HTMLSideBarNavElement>;
         }
     }
 }
