@@ -1,4 +1,4 @@
-import { Component, h, Prop } from '@stencil/core'
+import { Component, h, Prop, State } from '@stencil/core'
 
 @Component({
   tag: 'side-bar-menu',
@@ -6,6 +6,8 @@ import { Component, h, Prop } from '@stencil/core'
   shadow: true,
 })
 export class SideBarMenu {
+  @State() showContactInfo:boolean = false
+
   @Prop() title: string
   @Prop({reflect: true, mutable: true}) open: boolean
   @Prop() theme: string
@@ -14,7 +16,17 @@ export class SideBarMenu {
     this.open = !this.open
   }
 
+  handleContent(content:string){
+    this.showContactInfo = content === 'contact'
+  }
+
   render() {
+    let mainContent = <slot/>
+
+    if(this.showContactInfo){
+      mainContent = <div>testando</div>
+    }
+
     return this.open ? (
       <aside class={`side-bar-container ${this.theme}`}>
           <div class={`close-button`} onClick={this.handleSideBar.bind(this)}>
@@ -24,9 +36,14 @@ export class SideBarMenu {
           <h1 class="title">{this.title}</h1>
         </header>
 
+        <section class="tabs">
+          <button class={`tab-buttons ${!this.showContactInfo ? 'active' : ''}`} onClick={this.handleContent.bind(this, 'news')}>descubra</button>
+          <button class={`tab-buttons ${this.showContactInfo ? 'active' : ''}`} onClick={this.handleContent.bind(this, 'contact')}>contato</button>
+        </section>
+
         <div class="side-bar-main">
           <nav class="side-bar-nav">
-            <slot/>
+            {mainContent}
           </nav>
         </div>
       </aside>

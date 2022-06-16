@@ -23,6 +23,34 @@
     .title
       text-align: center
 
+  .tabs
+    display: flex
+    flex-direction: row
+    align-items: center
+    justify-content: center
+    width: 100%
+    padding: 3px
+    margin: auto
+
+    .tab-buttons
+      background: transparent
+      border: none
+      outline: none
+      width: 40%
+      padding: 3px 10px
+      font-size: 18px
+      color: white
+      border: solid 1px white
+      cursor: pointer
+      transition: .3s
+
+    .active,
+    .tab-buttons:hover,
+    .tab-buttons:active
+      background-color: white
+      color: black
+      font-weight: 500
+
   .close-button
     cursor: pointer
     position: absolute
@@ -38,6 +66,8 @@
     .side-bar-nav
       cursor: pointer
       font-size: 22px
+
+
 
 .hamburger-menu-button
   cursor: pointer
